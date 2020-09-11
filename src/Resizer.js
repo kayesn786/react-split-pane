@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
-  background: #000;
+  background: #111;
   opacity: 0.2;
   z-index: 1;
   box-sizing: border-box;
@@ -57,7 +57,7 @@ class Resizer extends Component {
   render() {
     const {
       index,
-      split = 'vertical',
+      split = "vertical",
       onClick = () => {},
       onDoubleClick = () => {},
       onMouseDown = () => {},
@@ -66,25 +66,25 @@ class Resizer extends Component {
     } = this.props;
 
     const props = {
-      ref: _ => (this.resizer = _),
-      'data-attribute': split,
-      'data-type': 'Resizer',
-      onMouseDown: event => onMouseDown(event, index),
-      onTouchStart: event => {
+      ref: (_) => (this.resizer = _),
+      "data-attribute": split,
+      "data-type": "Resizer",
+      onMouseDown: (event) => onMouseDown(event, index),
+      onTouchStart: (event) => {
         event.preventDefault();
         onTouchStart(event, index);
       },
-      onTouchEnd: event => {
+      onTouchEnd: (event) => {
         event.preventDefault();
         onTouchEnd(event, index);
       },
-      onClick: event => {
+      onClick: (event) => {
         if (onClick) {
           event.preventDefault();
           onClick(event, index);
         }
       },
-      onDoubleClick: event => {
+      onDoubleClick: (event) => {
         if (onDoubleClick) {
           event.preventDefault();
           onDoubleClick(event, index);
@@ -92,7 +92,7 @@ class Resizer extends Component {
       },
     };
 
-    return split === 'vertical' ? (
+    return split === "vertical" ? (
       <VerticalWrapper {...props} />
     ) : (
       <HorizontalWrapper {...props} />
